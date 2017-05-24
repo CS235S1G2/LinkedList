@@ -17,6 +17,7 @@
 #define NODE_H
 
 #include "node.h"
+#include <iostream>
 
 /***********************************************
  * Node
@@ -42,10 +43,33 @@ class Node
 * parameter. This should be a non­member function.
 ***********************************************/
 template <class T>
-Node <T> * copy(Node <T> * pNode)
+Node <T> * copy(const Node <T> * pSource) throw (const char *)
 {
+   // trivial case
+   if (NULL == pSource)
+      return NULL;
    
-}   
+   try
+   {
+      // allocate a new head
+      Node <T> * pDestination = new Node <T> (pSource->data);
+      Node <T> * pCurrent = pDestination;
+
+      // loop through the rest of the source linked list
+      while (pSource->pNext)
+      {
+         pSource = pSource->pNext;
+         pCurrent->pNext = new Node <T> (pSource->data);
+         pCurrent = pCurrent->pNext;
+      }
+
+      return pDestination;
+   }
+   catch(std::bad_alloc)
+   {
+      throw "ERROR: Failed to allocate memory for list\n";
+   }
+}
 
 /***********************************************
 * INSERT
@@ -55,9 +79,21 @@ Node <T> * copy(Node <T> * pNode)
 * list. Please return a pointer to the newly created Node. This should be a non­member function.
 ***********************************************/
 template <class T>
-Node <T> * insert(const T & t, Node <T> * pNode, bool isHead = false)
+Node <T> * insert(const T & t, Node <T> * pCurrent, bool isHead = false)
 {
+   Node <T> * pNew = new Node <T>(t);
    
+   if (pCurrent != NULL && isHead == false)
+   {
+      pNew->pNext = pCurrent->pNext;
+      pCurrent->pNext = pNew;
+   }
+   if (pCurrent != NULL && isHead == true)
+   {
+      pNew->pNext = pCurrent;
+   }
+   
+   return pNew;
 }
 
 /***********************************************
@@ -78,16 +114,25 @@ Node <T> * find(Node <T> * pHead, const T & t)
 * Display the contents of a given linked­list.
 ***********************************************/
 template <class T>
-std::ostream & operator << (std::ostream & out, Node <T> * pList):
+std::ostream & operator << (std::ostream & out, Node <T> * pList)
+{
+   
+}
 
 /***********************************************
+* FREE DATA
 * Release all the memory contained in a given linked­list. The one parameter is a
 * pointer to the head of the list. This should be a non­member function.
 ***********************************************/
 template <class T>
 void freeData(Node <T> * pHead)
 {
-   
+   Node <T> * pNext;
+   for (Node <T> * p = pHead; p; p = pNext)
+   {
+      pNext = p->pNext;
+      delete p;
+   }
 }
 
 
