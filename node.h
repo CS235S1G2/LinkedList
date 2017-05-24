@@ -4,7 +4,7 @@
  * Summary:
  *    This will contain the definition and implementation of the Node class
  * Author
- *    <your names here>
+ *    Nathan Bench, Jed Billman, Jeremy Chandler, Justin Chandler
  ************************************************************************/
  
 /***********************************************
@@ -31,7 +31,7 @@ class Node
       Node(const T & t): data(t) {}
       
       // members
-      Node * pNext;
+      Node <T> * pNext;
       T data;
 };
 
@@ -41,7 +41,7 @@ class Node
 * created linked­list containing a copy of all the nodes below the list represented by the
 * parameter. This should be a non­member function.
 ***********************************************/
-Node * copy(Node * pNode)
+Node <T> * copy(Node <T> * pNode)
 {
    
 }   
@@ -53,7 +53,7 @@ Node * copy(Node * pNode)
 * list. An optional third parameter is set to true if the new item is to be at the head of the
 * list. Please return a pointer to the newly created Node. This should be a non­member function.
 ***********************************************/
-Node * insert(const T & t, Node * pPrev, bool isHead = false)
+Node <T> * insert(const T & t, Node <T> * pNode, bool isHead = false)
 {
    
 }
@@ -65,7 +65,7 @@ Node * insert(const T & t, Node * pPrev, bool isHead = false)
 * return value is a pointer to the found node if one exists. This should be a non­member
 * function.
 ***********************************************/
-Node * find(Node * pHead, const T & t)
+Node <T> * find(Node <T> * pHead, const T & t)
 {
    
 }
@@ -74,13 +74,13 @@ Node * find(Node * pHead, const T & t)
 * EXTRACTION OPERATOR <<
 * Display the contents of a given linked­list.
 ***********************************************/
-std::ostream & operator << (std::ostream & out, Node * pList):
+std::ostream & operator << (std::ostream & out, Node <T> * pList):
 
 /***********************************************
 * Release all the memory contained in a given linked­list. The one parameter is a
 * pointer to the head of the list. This should be a non­member function.
 ***********************************************/
-void freeData(Node * pHead)
+void freeData(Node <T> * pHead)
 {
    
 }
