@@ -41,6 +41,7 @@ class Node
 * created linked­list containing a copy of all the nodes below the list represented by the
 * parameter. This should be a non­member function.
 ***********************************************/
+template <class T>
 Node <T> * copy(Node <T> * pNode)
 {
    
@@ -53,6 +54,7 @@ Node <T> * copy(Node <T> * pNode)
 * list. An optional third parameter is set to true if the new item is to be at the head of the
 * list. Please return a pointer to the newly created Node. This should be a non­member function.
 ***********************************************/
+template <class T>
 Node <T> * insert(const T & t, Node <T> * pNode, bool isHead = false)
 {
    
@@ -65,6 +67,7 @@ Node <T> * insert(const T & t, Node <T> * pNode, bool isHead = false)
 * return value is a pointer to the found node if one exists. This should be a non­member
 * function.
 ***********************************************/
+template <class T>
 Node <T> * find(Node <T> * pHead, const T & t)
 {
    
@@ -74,12 +77,14 @@ Node <T> * find(Node <T> * pHead, const T & t)
 * EXTRACTION OPERATOR <<
 * Display the contents of a given linked­list.
 ***********************************************/
+template <class T>
 std::ostream & operator << (std::ostream & out, Node <T> * pList):
 
 /***********************************************
 * Release all the memory contained in a given linked­list. The one parameter is a
 * pointer to the head of the list. This should be a non­member function.
 ***********************************************/
+template <class T>
 void freeData(Node <T> * pHead)
 {
    
