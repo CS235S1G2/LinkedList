@@ -79,21 +79,40 @@ Node <T> * copy(const Node <T> * pSource) throw (const char *)
 * list. Please return a pointer to the newly created Node. This should be a non­member function.
 ***********************************************/
 template <class T>
-Node <T> * insert(const T & t, Node <T> * pCurrent, bool isHead = false)
-{
-   Node <T> * pNew = new Node <T>(t);
-   
-   if (pCurrent != NULL && isHead == false)
+Node <T> * insert(const T & t, Node <T> * &pCurrent, bool isHead = false)
+{  
+   try
    {
-      pNew->pNext = pCurrent->pNext;
-      pCurrent->pNext = pNew;
+      Node <T> * pNew = new Node <T>(t);
+      
+      // IF NULL
+      if (pCurrent == NULL)
+      {
+         pCurrent = pNew;
+         return pNew;
+      }
+      
+      // IF isHead
+      if (pCurrent != NULL && isHead)
+      {
+         pNew->pNext = pCurrent;
+         pCurrent = pNew;
+         return pCurrent;
+      }
+      
+      // IF !isHead
+      if (pCurrent != NULL && !isHead)
+      {
+         pNew->pNext = pCurrent->pNext;
+         pCurrent->pNext = pNew;
+         return pNew;
+      }
    }
-   if (pCurrent != NULL && isHead == true)
+   catch(std::bad_alloc)
    {
-      pNew->pNext = pCurrent;
+      throw "ERROR: bad_alloc";
    }
-   
-   return pNew;
+
 }
 
 /***********************************************
@@ -114,9 +133,14 @@ Node <T> * find(Node <T> * pHead, const T & t)
 * Display the contents of a given linked­list.
 ***********************************************/
 template <class T>
-std::ostream & operator << (std::ostream & out, Node <T> * pList)
+std::ostream & operator << (std::ostream & out, Node <T> * pHead)
 {
+   for (Node <T> * p = pHead; p; p = p->pNext)
+   {
+      out << p->data;
+   }
    
+   return out;
 }
 
 /***********************************************
@@ -125,8 +149,11 @@ std::ostream & operator << (std::ostream & out, Node <T> * pList)
 * pointer to the head of the list. This should be a non­member function.
 ***********************************************/
 template <class T>
-void freeData(Node <T> * pHead)
+void freeData(Node <T> * &pHead)
 {
+   if (pHead == NULL)
+      return;
+   
    Node <T> * pNext;
    for (Node <T> * p = pHead; p; p = pNext)
    {
