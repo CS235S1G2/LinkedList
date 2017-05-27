@@ -157,9 +157,9 @@ void freeData(Node <T> * &pHead)
       return;
    
    Node <T> * pNext;
-   for (Node <T> * p = pHead; p; p = pNext)
+   for (Node <T> * p = pHead; p; p = p->pNext)
    {
-      pNext = p->pNext;
+      //pNext = p->pNext;
       delete p;
    }
 }
