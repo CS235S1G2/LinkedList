@@ -153,7 +153,7 @@ std::ostream & operator << (std::ostream & out, Node <T> * pHead)
 template <class T>
 void freeData(Node <T> * &pHead)
 {   
-   if (pHead == NULL)
+/*   if (pHead == NULL)
     return;
    for (Node <T> * p = pHead; p; p = p->pNext)
    {
@@ -162,6 +162,13 @@ void freeData(Node <T> * &pHead)
       std::cerr << "deleting p\n";
    }
     pHead = NULL;
+    */
+    while (pHead != NULL)
+   {
+     Node <T> * p = pHead;
+     pHead = pHead->pNext;
+     delete p;
+   }
 }
 
 
