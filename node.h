@@ -157,8 +157,8 @@ void freeData(Node <T> * &pHead)
     return;
    for (Node <T> * p = pHead; p; p = p->pNext)
    {
+      delete p.data;
       delete p;
-      *p = NULL;
       std::cerr << "deleting p\n";
    }
     pHead = NULL;
