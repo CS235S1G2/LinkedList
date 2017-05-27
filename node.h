@@ -154,8 +154,11 @@ template <class T>
 void freeData(Node <T> * &pHead)
 {   
    for (Node <T> * p = pHead; p; p = p->pNext)
+   {
       delete p;
-   pHead = NULL;
+      cout << "deleting p\n";
+   }
+    pHead = NULL;
 }
 
 
