@@ -137,7 +137,9 @@ std::ostream & operator << (std::ostream & out, Node <T> * pHead)
 {
    for (Node <T> * p = pHead; p; p = p->pNext)
    {
-      out << p->data << ", ";
+      out << p->data;
+    if (p->pNext == p)
+     out << ", ";
    }
    
    return out;
