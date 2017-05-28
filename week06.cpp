@@ -211,9 +211,8 @@ void testLoop()
       // create
       cout << "Create a char linked list: { a, b, c, d, e, f }\n";
       Node <char> * n = NULL;
-
-      insert('c', n, true);               // { c } 
-      insert('d', n);                     // { c, d }
+      insert('c', n, true);               // { c }
+      insert('d', n);                     // { c, d}
       insert('f', n->pNext);              // { c, d, f }
       insert('b', n, true);               // { b, c, d, f }
       insert('e', n->pNext->pNext);       // { b, c, d, e, f }
@@ -229,9 +228,8 @@ void testLoop()
            << "empty\n";
 
       // fill the list again
-      cout << "Fill the list now with: { Z, Y, X, W, V, U }\n";
-
-      insert('Y', n, true);                  // { Y }
+      cout << "Fill the list now with: { Z, Y, X, W, V, U }\n";     
+      insert('Y', n, true);                  // { Y }    
       insert('Z', n, true);                  // { Z, Y }
       insert('V', n->pNext);                 // { Z, Y, V }
       insert('U', n->pNext->pNext);          // { Z, Y, V, U }

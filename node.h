@@ -84,11 +84,11 @@ Node <T> * insert(const T & t, Node <T> * &pCurrent, bool isHead = false)
    try
    {
       Node <T> * pNew = new Node <T>(t);
-      std::cerr << "Adding: "<< t << " " << std::endl;
       // IF NULL
       if (pCurrent == NULL)
       {
          pCurrent = pNew;
+         pCurrent->pNext = NULL;
          return pNew;
       }
       
