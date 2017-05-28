@@ -25,6 +25,29 @@ void sortInsertion(T array[], int num)
 
 
 /**********************************************
+ * FIND SORTED
+ * 
+ **********************************************/
+ template <class T>
+ Node <T> * findSorted(Node <T> * pHead, const T & t)
+ {
+     if (pHead == NULL)
+       return NULL;
+     if (t < pHead->data)
+       return NULL;
+     Node <T> * pPrevious = pHead;
+     while (t > pHead->data)
+     {
+       if (pHead->pNext == NULL)
+         return pHead;
+       pPrevious = pHead;
+       pHead = pHead->pNext;
+     }
+     pHead = pPrevious;
+     return pHead;
+ }
+ 
+/**********************************************
  * INSERT SORTED
  * Insert a new node the the value in "t" into a linked
  * list denoted by pHead.  Place the new node in sorted order
