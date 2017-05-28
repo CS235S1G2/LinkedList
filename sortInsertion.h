@@ -20,7 +20,49 @@
 template <class T>
 void sortInsertion(T array[], int num)
 {
+
 }
 
+
+/**********************************************
+ * INSERT SORTED
+ * Insert a new node the the value in "t" into a linked
+ * list denoted by pHead.  Place the new node in sorted order
+ *   INPUT   : the new value to be put into the linked list
+ *             a pointer to the head of the linked list
+ *   OUTPUT  : the newly created item
+ *   COST    : O(n)
+ **********************************************/
+template <class T>
+Node <T> * insertSorted(const T & t, Node <T> * & pHead) throw (const char *)
+{
+   try
+   {
+      // allocate a new node
+      Node <T> * pNew = new Node <T> (t);
+
+      // find the location in the linked list immediately before
+      // the new node to be inserted
+      Node <T> * pFind = findSorted(pHead, t);
+      
+      // insert the new node to the head of the list
+      if (pFind == NULL)
+      {
+         pNew->pNext = pHead;
+         pHead = pNew;
+      }
+      // otherwise, insert the new node after the found one
+      else
+      {
+         pNew->pNext = pFind->pNext;
+         pFind->pNext = pNew;
+      }
+      
+   }
+   catch (std::bad_alloc)
+   {
+      throw "ERROR: Unable to allocate a new Node";
+   }
+}
 #endif // INSERTION_SORT_H
 
