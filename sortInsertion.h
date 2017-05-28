@@ -20,7 +20,23 @@
 template <class T>
 void sortInsertion(T array[], int num)
 {
+      // build the linked list
+   Node <T> * pHead = NULL;
+   for (int i = 0; i < num; i++)
+      insertSorted(array[i], pHead);
 
+   // copy the data from the link list back to the array
+   Node <T> * p = pHead;
+   for (int i = 0; i < num; i++)
+   {
+     array[i] = p->data;
+      // advance to next node
+      p = p->pNext;
+      
+   }
+
+   // do not forget to delete the data when finished
+   freeData(pHead);
 }
 
 
