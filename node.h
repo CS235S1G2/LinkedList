@@ -128,7 +128,7 @@ Node <T> * find(Node <T> * pHead, const T & t)
  for (Node<T> * p = pHead; p; p=p->PNext)
  {
    if (p->data == t)
-    return t;
+    return p;
  }  
  return NULL;
 }
