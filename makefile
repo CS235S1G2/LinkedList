@@ -1,11 +1,16 @@
 ###############################################################
 # Program:
 #     Week 06, NODE
-#     Brother XXXXX, CS235
+#     Brother Jonesl, CS235
 # Author:
-#     <your name here>
+#     Justin Chandler, Jeremy Chandler, Nathan Bench, Jed Billman
 # Summary:
-#     <put a description here>
+#     Implementation of the Node class and sort insertion
+# Time:
+#     Justin: 10 hours
+#     Jed: 5 hours
+#     Jeremy: 8 hours
+#     Nathan: 16 hours
 ###############################################################
 
 ##############################################################
