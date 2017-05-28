@@ -125,7 +125,7 @@ Node <T> * insert(const T & t, Node <T> * &pCurrent, bool isHead = false)
 template <class T>
 Node <T> * find(Node <T> * pHead, const T & t)
 {
- for (Node<T> * p = pHead; p; p=p->PNext)
+ for (Node<T> * p = pHead; p; p=p->pNext)
  {
    if (p->data == t)
     return p;
